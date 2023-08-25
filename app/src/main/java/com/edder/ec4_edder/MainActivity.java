@@ -1,14 +1,31 @@
 package com.edder.ec4_edder;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+import com.edder.ec4_edder.databinding.ActivityMainBinding;
+
+
+    public class MainActivity extends AppCompatActivity {
+        //private Button btnGetStarted;
+        private ActivityMainBinding binding;
+        private SharedPreferences sharedPreferences;
+
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            binding= ActivityMainBinding.inflate(getLayoutInflater());
+            setContentView(binding.getRoot());
+            binding.btnGetStarted.setOnClickListener(v->{
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            });
+
+
+        }
     }
-}
